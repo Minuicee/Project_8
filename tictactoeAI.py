@@ -244,22 +244,21 @@ class TicTacToe(QMainWindow):
                         saveProbability = random.randint(1,3) #33% rarity to save best move on easy mode
                         if saveProbability == 1:  
                             best_score = score
-                            if move == -1: #if no move was selected due to rarity, get first unused field
-                                for j in range(9):
-                                    if board[j] == " ":
-                                        move = j           
-                            else:
-                                move = i
+                            move = i    
+                            
                     elif self.mode == "medium":
                         saveProbability = random.randint(1,4) #75% rarity to save best move on medium mode
                         if saveProbability < 3:  
                             best_score = score
-                            move = i
+                            move = i    
                     else:
                         best_score = score #100% rarity to save best move on hard mode
                         move = i
                             
-                    
+        if move == -1: #if no move was selected due to rarity, get first unused field
+            for j in range(9):
+                if board[j] == " ":
+                    move = j                    
         return move #Do the calculated best move
                 
 if __name__ == "__main__":
